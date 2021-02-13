@@ -1,0 +1,23 @@
+{
+    "name": "nodeproject",
+    "version": "1.0.0",
+    "main": "app.js",
+    "scripts": {
+        "test": "node app.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "dependencies": {
+        "axios": "^0.21.1",
+        "body-parser": "^1.19.0",
+        "csv-parse": "^4.15.1",
+        "csvtojson": "^2.0.10",
+        "express": "^4.17.1",
+        "extract-zip": "^2.0.1",
+        "moment": "^2.29.1",
+        "mongodb": "^3.6.4",
+        "nodemon": "^2.0.7",
+        "request": "^2.88.2"
+    }
+}
