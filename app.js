@@ -125,7 +125,7 @@ app.get('/getStock', async function(req, res) {
                 .then(async (jsonObj) => {
                     for (let opo = 0; opo < jsonObj.length; opo++) {
                         var row = jsonObj[opo];
-                        var stock = { ...row };
+                        var stock = { ...row, created };
                         var payload = {
                             $set: {
                                 "SC_CODE": `${row.SC_CODE}`,
@@ -146,9 +146,28 @@ app.get('/getProfit', async function(req, res) {
     let data = req.query;
 
     if (!data.code || typeof data.code != 'int') {
-        res.send({ status: false, message: 'Invalid Input' })
+        // res.send({ status: false, message: 'Invalid Input' })
     }
+
+    let stock = await db.collection("BSEINDIA").findOne({ SC_CODE: data.code });
+    console.log({ stock: stock });
+    res.send("success");
 })
+function factorial(n) {
+    let answer = 1;
+    if (n == 0 || n == 1) {
+        return answer;
+    } else {
+        for (var i = n; i >= 1; i--) {
+            answer = answer * i;
+            console.log({ answer: answer });
+        }
+        return answer;
+    }
+}
+let n = 3;
+answer = factorial(n)
+console.log("The factorial of " + n + " is " + answer);
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}!`)
